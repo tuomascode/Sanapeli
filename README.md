@@ -11,13 +11,11 @@ First is the game itself. The goal is to guess the hidden 5-letter word. The gam
 
 The second feature may be accessed with the § key. The game will expand and show you a list of good guesses. The inital set of suggestions is stored in memory, as the process of finding ideal words takes cpu time and the suggestions are the same on the first try anyway. I precomputed this in the process of building the game. 
 
-After the first guess, an algorithm finds the best candidates for the next guess, which are all possible words. The upside of the algorithm is that every guess reduces ideally the remaining possible guesses while being a candidate answer. The downside is that the algorithm doesn't consider any words which aren't in the candidate list, which could however reduces the list of possible words even further. Thus, it is possible to fail even while using the algorithm. Consider for example the following suggestion list and two remaining guesses.
+After the first guess, an algorithm finds the best candidates for the next guess, which are all possible words. The upside of the algorithm is that every guess reduces ideally the remaining possible guesses while being a candidate answer. The downside is that the algorithm doesn't consider any words which aren't in the candidate list, which could however reduces the list of possible words even further. Thus, it is possible to fail even while using the algorithm. Consider for example the following gamestate.
 
-Karja
-Sarja
-Harja
+![image](https://user-images.githubusercontent.com/115335825/195973626-a05a928b-999e-4f4d-830c-3ed04c52ed47.png)
 
-If the correct answer is Harja, guessing the first two ones will fail in winning the game. A smarter algorithm would first use a guess to deduce which letter K, S or H is in the word, and guess the last one correctly. However, the algorithm almost always does find an answer.
+If the correct answer is SUOVA, guessing the first three ones will fail in winning the game. A smarter algorithm would first use a guess to deduce which letter  is in the word, and guess the last one correctly. However, the algorithm almost always does find an answer.
 
 #Why?
 
