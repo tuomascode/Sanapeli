@@ -11,7 +11,7 @@ First is the game itself. The goal is to guess the hidden 5-letter word. The gam
 
 The second feature may be accessed with the § key. The game will expand and show you a list of good guesses. The inital set of suggestions is stored in memory, as the process of finding ideal words takes cpu time and the suggestions are the same on the first try anyway. I precomputed this in the process of building the game. 
 
-After the first guess, an algorithm finds the best candidates for the next guess, which are all possible words. The upside of the algorithm is that every guess reduces ideally the remaining possible guesses while being a candidate answer. The downside is that the algorithm doesn't consider any words which aren't in the candidate list, which could however reduces the list of possible words even further. Thus, it is possible to fail even while using the algorithm. Consider for example the following gamestate.
+After the first guess, an algorithm finds the best candidates for the next guess, which are all possible correct guesses. The upside of the algorithm is that every guess reduces ideally the remaining possible guesses while being a candidate answer. The downside is that the algorithm doesn't consider any words which aren't in the candidate list, which could however reduces the list of possible words even further. Thus, it is possible to fail even while using the algorithm. Consider for example the following gamestate.
 
 ![image](https://user-images.githubusercontent.com/115335825/195973626-a05a928b-999e-4f4d-830c-3ed04c52ed47.png)
 
@@ -24,11 +24,15 @@ There was also some problem with the .csv file and the .txt file, so the code mi
 The motivation for this project came from interest in building a slightly more complex game. I also found the idea of implementing the search algorithm very appealing. Altho the algorithm could be improved even further, I am currently satisfied with it. Improvements could be made using a faster language, f.e. c++ and expanding the scope of the search.
 
 
-How?
+#How?
 
 Download the project files to single folder and install pygame, instructions here. Run the peli.py python file and enjoy.
 
 The x key may be used to reset the game with the same word as the hidden word. This is useful feature for testing and finding out some bugs.
+
+#More about the algorithm
+
+The basic idea of the hint algorithm is to check every possible remaining guess against every other, so that the first hint on average reduces the number of remaining words the most. So if there remains 300 possible guesses, the algorithm assumes for each guess that it is correct and then checks how much each word reduce the size of the guess list. These are then added together and the one with the lowest value is the first recommendation.
 
 
 
