@@ -17,10 +17,18 @@ After the first guess, an algorithm finds the best candidates for the next guess
 
 If the correct answer is SUOVA, guessing the first three ones will fail in winning the game. A smarter algorithm would first use a guess to deduce which letter  is in the word, and guess the last one correctly. However, the algorithm almost always does find an answer.
 
+There was also some problem with the .csv file and the .txt file, so the code might have to fix the csv file to work properly.
+
 #Why?
 
 The motivation for this project came from interest in building a slightly more complex game. I also found the idea of implementing the search algorithm very appealing. Altho the algorithm could be improved even further, I am currently satisfied with it. Improvements could be made using a faster language, f.e. c++ and expanding the scope of the search.
 
+
+How?
+
+Download the project files to single folder and install pygame, instructions here. Run the peli.py python file and enjoy.
+
+The x key may be used to reset the game with the same word as the hidden word. This is useful feature for testing and finding out some bugs.
 
 
 
