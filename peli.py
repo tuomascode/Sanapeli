@@ -1,11 +1,15 @@
 import pygame
 from random import choice
 from sanat import palauta_sanat, korjaa_csv, palauta_tulos
+
+#Testi muuutos kommentille
+
 class Kirjainlaatikot:
     def __init__(self, positiokoko):
         self.vari =(80, 80, 80)
         self.posko=positiokoko
         self.vihrea=False
+        self.uusimuuttuja=1
     def vaihda_vihrea(self):
         self.vari=(180,255,190)
         self.vihrea=True
