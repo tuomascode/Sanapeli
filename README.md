@@ -1,6 +1,8 @@
 #Sanuli
 
 A finnish version of the popular Wordle-game, built with Python pygame. My first game project.
+
+
 Installation
 
 Install pygame from: https://www.pygame.org/wiki/GettingStarted
