@@ -12,7 +12,7 @@ The goal of the game is to guess the hidden 5-letter word. The game will show on
     Yellow means the letter appears in the word, but is in the wrong slot.
     Green means the letter appears and is in the right slot.
 
-You can access a list of good guesses by pressing the § key. The initial set of suggestions is stored in memory, as the process of finding ideal words takes CPU time and the suggestions are the same on the first try anyway. After the first guess, an algorithm finds the best candidates for the next guess, which are all possible correct guesses. The algorithm almost always finds an answer, but it is possible to fail even while using it. For example, if the correct answer is SUOVA, guessing the first three letters will fail to win the game.
+You can access a list of good guesses by pressing the § key. The initial set of suggestions is stored in memory, as the process of finding ideal words takes CPU time and the suggestions are the same on the first try anyway. After the first guess, an algorithm finds the best candidates for the next guess, which are all possible correct guesses. The algorithm almost always finds an answer, but it is possible to fail even while using it. 
 
 The x key may be used to reset the game with the same word as the hidden word. This is useful for testing and finding bugs.
 More about the algorithm
