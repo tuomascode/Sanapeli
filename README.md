@@ -1,38 +1,26 @@
-# sanuli
-A finnish version of the popular Wordle-game.
+#Sanuli
 
-#What?
+A finnish version of the popular Wordle-game, built with Python pygame.
+Installation
 
-Game build with Python pygame. Install pygame from: https://www.pygame.org/wiki/GettingStarted
+Install pygame from: https://www.pygame.org/wiki/GettingStarted
+Gameplay
 
-The game has two key featurues.
+The goal of the game is to guess the hidden 5-letter word. The game will show one of three different colours for each letter:
 
-First is the game itself. The goal is to guess the hidden 5-letter word. The game will show one of three different colours for each letter. Grey means the letter doesn't appear in the word. Yellow means the letter appears in the word, but is in the wrong slot. Green means the letter appears and is in the right slot.
+    Grey means the letter doesn't appear in the word.
+    Yellow means the letter appears in the word, but is in the wrong slot.
+    Green means the letter appears and is in the right slot.
 
-The second feature may be accessed with the § key. The game will expand and show you a list of good guesses. The inital set of suggestions is stored in memory, as the process of finding ideal words takes cpu time and the suggestions are the same on the first try anyway. I precomputed this in the process of building the game. 
+You can access a list of good guesses by pressing the § key. The initial set of suggestions is stored in memory, as the process of finding ideal words takes CPU time and the suggestions are the same on the first try anyway. After the first guess, an algorithm finds the best candidates for the next guess, which are all possible correct guesses. The algorithm almost always finds an answer, but it is possible to fail even while using it. For example, if the correct answer is SUOVA, guessing the first three letters will fail to win the game.
 
-After the first guess, an algorithm finds the best candidates for the next guess, which are all possible correct guesses. The upside of the algorithm is that every guess reduces ideally the remaining possible guesses while being a candidate answer. The downside is that the algorithm doesn't consider any words which aren't in the candidate list, which could however reduces the list of possible words even further. Thus, it is possible to fail even while using the algorithm. Consider for example the following gamestate.
+The x key may be used to reset the game with the same word as the hidden word. This is useful for testing and finding bugs.
+More about the algorithm
 
-![image](https://user-images.githubusercontent.com/115335825/195973626-a05a928b-999e-4f4d-830c-3ed04c52ed47.png)
+The basic idea of the hint algorithm is to check every possible remaining guess against every other, so that the first hint on average reduces the number of remaining words the most. So if there are 300 possible guesses remaining, the algorithm assumes for each guess that it is correct and then checks how much each word reduces the size of the guess list. These values are then added together and the one with the lowest value is the first recommendation.
+Known issues
 
-If the correct answer is SUOVA, guessing the first three ones will fail in winning the game. A smarter algorithm would first use a guess to deduce which letter  is in the word, and guess the last one correctly. However, the algorithm almost always does find an answer.
-
-There was also some problem with the .csv file and the .txt file, so the code might have to fix the csv file to work properly.
-
-#Why?
-
-The motivation for this project came from interest in building a slightly more complex game. I also found the idea of implementing the search algorithm very appealing. Altho the algorithm could be improved even further, I am currently satisfied with it. Improvements could be made using a faster language, f.e. c++ and expanding the scope of the search.
-
-
-#How?
-
-Download the project files to single folder and install pygame, instructions here. Run the peli.py python file and enjoy.
-
-The x key may be used to reset the game with the same word as the hidden word. This is useful feature for testing and finding out some bugs.
-
-#More about the algorithm
-
-The basic idea of the hint algorithm is to check every possible remaining guess against every other, so that the first hint on average reduces the number of remaining words the most. So if there remains 300 possible guesses, the algorithm assumes for each guess that it is correct and then checks how much each word reduce the size of the guess list. These are then added together and the one with the lowest value is the first recommendation.
+There were some issues with the .csv and .txt files, so the code might need to fix the csv file to work properly.
 
 
 
