@@ -3,7 +3,7 @@ from random import choice
 from sanat import palauta_sanat, korjaa_csv, palauta_tulos
 
 
-class Kirjainlaatikot:
+class Word_boxes:
     def __init__(self, positiokoko):
         self.vari =(80, 80, 80)
         self.posko=positiokoko
@@ -150,7 +150,7 @@ class parametrit:
             self.laatikot.append([])
             self.kirjaimet.append([])
             for j in range(5):
-                self.laatikot[i].append(Kirjainlaatikot((50+(j*60), 50+(i*60),50,50)))
+                self.laatikot[i].append(Word_boxes((50+(j*60), 50+(i*60),50,50)))
                 self.kirjaimet[i].append(kirjain((50+(j*60)+8, 50+(i*60)+3)))
 
         for i in range(len(ekarivi)):
