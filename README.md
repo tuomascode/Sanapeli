@@ -25,3 +25,7 @@ There were some issues with the .csv and .txt files, so the code might need to f
 A lof of the code is in Finnish and there aren't a lot of comments. I would fix these issues if the game had a future. For now, it is just a portfolio entry.
 
 
+
+
+https://user-images.githubusercontent.com/115335825/210356482-b180eadc-5781-4779-a5eb-b60b1bc9c90a.mp4
+
