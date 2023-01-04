@@ -23,7 +23,7 @@ The basic idea of the hint algorithm is to check every possible remaining guess 
 
 Known issues
 
-There were some issues with the .csv and .txt files, so the code might need to fix the csv file to work properly.
+There were some issues with the .csv and .txt files and the finnish letters such as ä and ö, so the code might need to fix the csv file to work properly.
 
 A lof of the code is in Finnish and there aren't a lot of comments. I would fix these issues if the game had a future. For now, it is just a portfolio entry.
 
