@@ -6,6 +6,7 @@ A finnish version of the popular Wordle-game, built with Python pygame. My first
 Installation
 
 Install pygame from: https://www.pygame.org/wiki/GettingStarted
+
 Gameplay
 
 The goal of the game is to guess the hidden 5-letter word. The game will show one of three different colours for each letter:
