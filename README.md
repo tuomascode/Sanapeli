@@ -20,6 +20,7 @@ You can access a list of good guesses by pressing the § key. The initial set of
 The x key may be used to reset the game with the same word as the hidden word. This is useful for testing and finding bugs.
 
 The basic idea of the hint algorithm is to check every possible remaining guess against every other, so that the first hint on average reduces the number of remaining words the most. So if there are 300 possible guesses remaining, the algorithm assumes for each guess that it is correct and then checks how much each word reduces the size of the guess list. These values are then added together and the one with the lowest value is the first recommendation.
+
 Known issues
 
 There were some issues with the .csv and .txt files, so the code might need to fix the csv file to work properly.
