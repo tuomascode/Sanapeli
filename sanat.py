@@ -95,6 +95,17 @@ def korjaa_csv():
         for i in lista:
             tiedosto.write(i+"\n")
 
+def return_wordlist():
+    lista=[]
+    with open("sanat.txt") as tiedosto:
+         for i in tiedosto:
+            i=i.strip(";")
+            i=i.strip("\n")
+            i=i.replace("Ã¤","ä")
+            i=i.replace("Ã¶","ö")
+            lista.append(i)
+    return lista
+
 def palauta_tulos(oikeasana,testisana,sanalista):
 
     sanoja=len(sanalista)
