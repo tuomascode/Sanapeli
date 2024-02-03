@@ -1,0 +1,11 @@
+litra 192
+kasti 202
+taksi 202
+liuta 204
+kitua 207
+ratki 208
+lasti 209
+oikea 209
+lista 211
+rasti 211
+
