@@ -1,7 +1,9 @@
 import pygame
+import unittest
 from drawer import GameDrawer
 from inputs import EventChecker
 from game_handler import GameHandler
+from tests import test_all
 
 
 def initialize_game():
@@ -24,6 +26,7 @@ def run_game(game_handler:'GameHandler', ec:'EventChecker', game_drawer:'GameDra
                     ret_val = game_handler.check_answer()
                     if ret_val == "play_row":
                         game_handler.play_row()
+                        game_handler.solve_clues()
                         game_drawer.update_guess_related_values(game_handler.get_game_state())
             elif event_type == "quit":
                 exit()
@@ -49,10 +52,30 @@ def main():
     game_handler, ec, game_drawer = initialize_game()
     run_game(game_handler, ec, game_drawer)
 
-if __name__=="__main__":
-    # testaa()
 
-    main()
+def run_tests():
+    # Load tests from tests.py
+    loader = unittest.TestLoader()
+    suite = loader.discover('.', pattern='tests.py')  # Assuming tests.py is in the current directory
+    
+    # Run tests
+    print("Running tests. If they fail, no point in running the game")
+    runner = unittest.TextTestRunner()
+    result = runner.run(suite)
+    
+    # Check if tests passed
+    return result.wasSuccessful()
+
+
+if __name__ == '__main__':
+    # First, run the unittests
+    tests_passed = run_tests()
+    
+    if tests_passed:
+        main()
+    else:
+        print("Tests failed. Exiting.")
+        exit(1)
  
 
 

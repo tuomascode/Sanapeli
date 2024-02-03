@@ -56,7 +56,6 @@ class GameHandler:
         self.move_cursor_right()
 
     def check_answer(self):
-        print("checking guess:", self.guess_word, "with row", self.game_row)
         self.word_in_dictionary = False
         if self.guess_word in self.all_words_list:
             self.word_in_dictionary = True
@@ -64,19 +63,17 @@ class GameHandler:
         return "continue"
     
     def play_row(self):
-        print("Playing row with guess:", self.guess_word)
         self.update_colour_map()
         self.cursor_index = 0
-        self.solver.solve_possible_words(self.guess_word, self.correct_word)
-        self.clues = self.solver.solve_best_guess_words()
-        self.clues = [i.upper() for i in self.clues]
         self.winning = False not in [self.guess_word[i] == self.correct_word[i] for i in range(5)]
         self.game_row += 1
         if not self.winning and self.game_row == 5:
             self.losing=True
 
-    def quit(self):
-        exit()
+    def solve_clues(self):
+        self.solver.solve_possible_words(self.guess_word, self.correct_word)
+        self.clues = self.solver.solve_best_guess_words()
+        self.clues = [i.upper() for i in self.clues]
 
     ### UTILITY AND PROPERTY FUNCS ####
 
