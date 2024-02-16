@@ -1,4 +1,6 @@
 import pygame
+
+
 class EventChecker:
     def __init__(self) -> None:
         self.hint_box_x = 40

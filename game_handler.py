@@ -4,7 +4,7 @@ from word_solver import WordHints
 
 
 class GameHandler:
-    def __init__(self):
+    def __init__(self, correct_word = None):
         self.solver = WordHints()
         hints = ["kasti", "taksi", "ratki", "kausi", "kilta", "kitua", "kiusa", "rasti", "silta", "raksi"]
         hints = ["litra", "kasti", "taksi", "liuta", "kitua", "ratki", "lasti", "oikea", "lista", "rasti"]
@@ -13,12 +13,14 @@ class GameHandler:
         self.possible_words_left = []
         self.all_words_list = return_wordlist()
         self.correct_word = choice(self.all_words_list)
+        if correct_word:
+            self.correct_word = correct_word
         self.cursor_index = 0
         self.game_row = 0
         self.losing = False
         self.winning = False
         self.word_in_dictionary = True
-        self.interesting_solve_words = ["palte","nyreä","kyylä","neppi","safka","saada","paali",]
+        self.interesting_solve_words = ["palte","nyreä","kyylä","neppi","safka","saada","paali","massi"]
         self.colour_map = {"black":[],"yellow":[],"green":[]}
 
     def move_cursor_right(self):
@@ -72,7 +74,7 @@ class GameHandler:
 
     def solve_clues(self):
         self.solver.solve_possible_words(self.guess_word, self.correct_word)
-        self.clues = self.solver.solve_best_guess_words()
+        self.clues = self.solver.solve_clues()
         self.clues = [i.upper() for i in self.clues]
 
     ### UTILITY AND PROPERTY FUNCS ####
