@@ -1,3 +1,5 @@
+import numpy as np
+
 def return_wordlist():
     word_list = []
     with open("sanat.txt") as tiedosto:

@@ -6,10 +6,9 @@ class GameDrawer:
         Responsible for everything that is drawed to screen
         """
         pygame.init()
+        self.screen = pygame.display.set_mode((400, 700))
         if show_clues:
             self.screen = pygame.display.set_mode((565, 700))
-        else:
-            self.screen = pygame.display.set_mode((400, 700))
         self.letter_handler = GuessWords()
         self.guess_box_handler_word = GuessWordBoxes()
         self.keyboard = Keyboard()
@@ -27,7 +26,7 @@ class GameDrawer:
     def draw(self):
         self.draw_basics()
         self.draw_game_state()
-        self.draw_boxes()
+        self.draw_typed_guesses()
         self.draw_hint_box(self.game_state["clues"])
         self.letter_handler.draw_letters(self.screen, self.game_state["letters"])
         self.keyboard.draw_buttons(self.screen)
@@ -52,10 +51,11 @@ class GameDrawer:
         word_in_dictionary = self.game_state["word_in_dictionary"]
         all_letters_typed = self.game_state["all_letters_typed"]
         correct_word = self.game_state["correct_word"]
+
         if not winning:
             if game_row != 5:
                 pointer = pointteri((45 + (cursor_index * 60), 45 + (game_row*60), 60, 60))
-                pygame.draw.rect(self.screen, pointer.vari, pointer.posko)
+                pygame.draw.rect(self.screen, pointer.vari, pointer.position_size_tuple)
                 del pointer
             if not word_in_dictionary and all_letters_typed:
                 self.screen.blit(pygame.font.SysFont("Georgia", 20).render("Sanaa ei löytynyt",True,(20,20,20)),(50,350))
@@ -67,19 +67,16 @@ class GameDrawer:
             self.screen.blit(pygame.font.SysFont("Georgia", 20).render("Voitit pelin!",True, (20, 20, 20)), (50, 350))
             self.screen.blit(pygame.font.SysFont("Georgia", 20).render("Paina enteriä pelataksesi uudestaan!", True, (20, 20, 20)), (50, 380))
 
-    def draw_boxes(self):
+    def draw_typed_guesses(self):
         self.guess_box_handler_word.draw(self.screen)
 
     def update_guess_related_values(self, game_state):
-        self.update_input_related_values(game_state)
+        self.game_state = game_state
         self.colour_guess_boxes_black()
         self.colour_partially_matching_guess_boxes_yellow()
         self.colour_matching_guess_boxes_green()
         self.keyboard.colour_keys_with_colourmap(game_state["colour_map"])
 
-    def update_input_related_values(self, game_state):
-        self.game_state = game_state
-        
     def colour_guess_boxes_black(self):
         game_row = self.game_state["game_row"] - 1
         for i in range(5):
@@ -152,7 +149,10 @@ class LetterDrawer:
         screen.blit(text, self.position)
 
 class Keyboard:
-    def __init__(self) -> None:
+    def __init__(self):
+        """
+        Functions for drawing the keyboard.
+        """
         first_row = "qwertyuiop".upper()
         second_row = "asdfghjklöä".upper()
         third_row = "zxcvbnm".upper()
@@ -191,7 +191,6 @@ class KeyboardKey:
             "black" : 1,
             "yellow" : 2,
             "green" : 3
-
         }
         self.position = position
         self.size = (33, 33)
@@ -219,26 +218,26 @@ class KeyboardKey:
 
 class GuessWordBoxes:
     def __init__(self):
-        self.laatikot = []
+        self.guess_boxes = []
         for i in range(5):
-            self.laatikot.append([])
+            self.guess_boxes.append([])
             for j in range(5):
-                self.laatikot[i].append(WordBox((50+(j*60), 50+(i*60),50,50)))
+                self.guess_boxes[i].append(WordBox((50+(j*60), 50+(i*60),50,50)))
 
     def draw(self, screen):
-        for i in self.laatikot:
+        for i in self.guess_boxes:
             for j in i:
-                pygame.draw.rect(screen, j.vari, j.posko)
+                pygame.draw.rect(screen, j.vari, j.position_size_tuple)
 
     def colour_box_with_colour(self, row, index, colour):
-        box = self.laatikot[row][index]
+        box = self.guess_boxes[row][index]
         box.update_colour(colour)
 
     def get_box_row(self, row):
-        return self.laatikot[row]
+        return self.guess_boxes[row]
 
 class WordBox:
-    def __init__(self, positiokoko):
+    def __init__(self, position_and_size_tuple):
         self.colours = {
             "neutral" : (80, 80, 80),
             "green" : (180,255,190),
@@ -246,7 +245,7 @@ class WordBox:
             "black" : (100, 100, 100)
         }
         self.vari = self.colours["neutral"]
-        self.posko = positiokoko
+        self.position_size_tuple = position_and_size_tuple
         self.is_green = False
     
     def update_colour(self, new_colour):
@@ -256,6 +255,6 @@ class WordBox:
 
 
 class pointteri:
-    def __init__(self,positiokoko):
-        self.vari=(240,240,240)
-        self.posko=positiokoko
+    def __init__(self, position_and_size_tuple):
+        self.vari = (240, 240, 240)
+        self.position_size_tuple = position_and_size_tuple
