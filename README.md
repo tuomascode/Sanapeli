@@ -24,6 +24,7 @@ The x key may be used to reset the game with the same word as the hidden word. T
 * New unittests allow for safe developing. These provide quite good coverage and should aid in future development.
 * Improved efficiency and speed of the solve_clues algorithm.
 * Improved code readability and reuse options
+* Basically tried to implement clean coding and test driven development principals.
 
 
 https://user-images.githubusercontent.com/115335825/210356482-b180eadc-5781-4779-a5eb-b60b1bc9c90a.mp4

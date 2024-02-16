@@ -1,10 +1,5 @@
 import numpy as np
-import json
-import math
-import time
-from random import choices
-from words import return_wordlist
-from utils import solve_most_common_letters
+from words import return_wordlist, solve_most_common_letters
 
 class ColoredLetters:
     def __init__(self):
