@@ -15,19 +15,15 @@ The goal of the game is to guess the hidden 5-letter word. The game will show on
     Yellow means the letter appears in the word, but is in the wrong slot.
     Green means the letter appears and is in the right slot.
 
-You can access a list of good guesses by pressing the § key. The initial set of suggestions is stored in memory, as the process of finding ideal words takes CPU time and the suggestions are the same on the first try anyway. After the first guess, an algorithm finds the best candidates for the next guess, which are all possible correct guesses. The algorithm almost always finds an answer, but it is possible to fail even while using it. 
+You can access a list of good guesses by pressing the § key. The initial set of suggestions is stored in memory, as the process of finding ideal words takes CPU time and the suggestions are the same on the first try anyway. After the first guess, an algorithm finds the best candidates for the next guess. The algorithm always finds an answer. 
 
 The x key may be used to reset the game with the same word as the hidden word. This is useful for testing and finding bugs. Also a fun fact, there are no five letter words in finnish that have the letter x.
 
-The basic idea of the hint algorithm is to check every possible remaining guess against every other, so that the first hint on average reduces the number of remaining words the most. So if there are 300 possible guesses remaining, the algorithm assumes for each guess that it is correct and then checks how much each word reduces the size of the guess list. These values are then added together and the one with the lowest value is the first recommendation.
-
-Known issues
-
-There were some issues with the .csv and .txt files and the finnish letters such as ä and ö, so the code might need to fix the csv file to work properly. I does this automatically, so no worries there.
-
-A lof of the code is in Finnish and there aren't a lot of comments. I would fix these issues if the game had a future. For now, it is just a portfolio entry.
-
-
+## Changes 16.2.2024
+* Refactored everything. Before all the code was in one file. Now refactored code is divided by responsility.
+* New unittests allow for safe developing. These provide quite good coverage and should aid in future development.
+* Improved efficiency and speed of the solve_clues algorithm.
+* Improved code readability and reuse options
 
 
 https://user-images.githubusercontent.com/115335825/210356482-b180eadc-5781-4779-a5eb-b60b1bc9c90a.mp4
